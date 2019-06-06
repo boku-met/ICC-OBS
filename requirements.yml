@@ -16,5 +16,5 @@ dependencies:
   - cartopy=0.17
   - metpy=0.10.0
   - pip:
-	- pykrige=1.4.1
+    - pykrige=1.4.1
     - gooey==1.0.2
