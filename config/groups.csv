@@ -1,0 +1,5 @@
+id,title,description,columns,show_border
+1,Domain Settings,"Define the bounding box of the desired domain.",4,1
+2,Period and Parameter Settings,"Define the time period on which bias correction should be applied (ideally a 30-year period) and the parameter that should be corrected.",2,1
+3,Files and Directories,"Define where to find the files and directories needed",1,1
+4,Advanced Interpolation Settings,"If you choose inverse distance weights interpolation as interpolation method, you can define some additional settings here.",2,1

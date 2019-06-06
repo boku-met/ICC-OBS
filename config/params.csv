@@ -1,0 +1,27 @@
+param,group,title,description,type,choices,
+lat_min,1,lat_min,latitude of the lower left corner of the domain,float,,
+lat_max,1,lat_max,latitude of the upper right corner of the domain,float,,
+lon_min,1,lon_min,longitude of the lower left corner of the domain,float,,
+lon_max,1,lon_max,longitude of the upper right corner of the domain,float,,
+start_y,2,start year,year at which bias correction should start (min. 1981),int,,
+end_y,2,end year,year at which bias correction should end (max. 2100),int,,
+param,2,Parameter,"Choose the parameter, that should be corrected
+pr: precipitation [mm]
+tasmax: maximum temperature [°C]
+tasmin: minimum temperature [°C]
+rsds: global radiation [W/m2]
+sfcWind: wind speed at 10m [m/s]
+hurs: relative humidity [%]",string,"pr,tasmax,tasmin,rsds,sfcWind,hurs",
+fil_topo,3,topography data,file containing the height information of every grid point,file,,
+dir_stations,3,station data,directory of the station data time series for the chosen parameter,dir,,
+fn_metadata,3,station metadata,file containing the metadata information for each station,file,,
+fil_obsgrid,3,gridded observations,file containing the gridded observations for the chosen parameter,file,,
+dir_save,3,save directory,directory where the new data should be stored,dir,,
+dir_save_name,3,save folder name,"name of the new folder, that will be created automatically under the directory chosen above using the specified name and a time stamp",string,,
+model_hist,3,historical model data,file(s) containing the historical model data (years 1981-2010),file,,
+model_rcp,3,model scenario data,"file(s) containing the model data of the period that should be bias corrected
+-the years needed for bias correction, selected above, will be cut out automatically",file,,
+interp_method,4,interpolation method,interpolation method that should be applied to interpolate station data,string,"kriging,idw",
+dist,4,radius of influence,distance in km at which the weights should be zero,float,,
+neighbor,4,min number of stations,Minimum number of neighbors needed to perform idw-interpolation,string,"2,3,4",
+variogram_model,4,variogram model,variogram model for the kriging interpolation,string,"gaussian,spherical,exponential,linear",
