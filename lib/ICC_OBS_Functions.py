@@ -397,7 +397,7 @@ def plot_result(param, data_bc, data_hist, plot_dir, lat, lon, st_lats, st_lons,
 
     years = int(end_y) - int(start_y) + 1
 
-    #borders = cpy.io.shapereader.Reader("ne_50m_admin_0_countries.shp")
+    borders = cpy.io.shapereader.Reader("lib/ne_50m_admin_0_countries.shp")
 
     if not os.path.exists(plot_dir): # creates directory if not existing
         os.makedirs(plot_dir)
@@ -466,7 +466,7 @@ def plot_result(param, data_bc, data_hist, plot_dir, lat, lon, st_lats, st_lons,
 
     axes_class = (GeoAxes,
                   dict(map_projection=projection))
-    
+
     delta_lat = np.ceil((lat.max() - lat.min()) * 1.2)
     delta_lon = np.ceil((lon.max() - lon.min()) * 3.5)
     print(delta_lat, delta_lon)
@@ -483,9 +483,9 @@ def plot_result(param, data_bc, data_hist, plot_dir, lat, lon, st_lats, st_lons,
                     cbar_size='3%',
                     label_mode='')  # note the empty label_mode
 
- #   for i in ax:
- #       for land in borders.geometries():
- #           i.add_geometries([land], crs=projection, facecolor='none', linewidth=0.7, edgecolor="black")
+    for i in ax:
+        for land in borders.geometries():
+            i.add_geometries([land], crs=projection, facecolor='none', linewidth=0.7, edgecolor="black")
 
     if lat.all() > 0:
         lat_hem = 'N'
