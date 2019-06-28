@@ -70,9 +70,10 @@ def read_stationdata(param, data_dir, fn_metadata, start_y=1981, end_y=2010):
     
     try:
         for stat_nr in df_metadata.stationnr:
+            filename = glob.glob(data_dir+str(int(stat_nr))+'_'+param+'.*')
             #data_st = np.genfromtxt(data_dir+str(int(stat_nr))+'_'+param+'.csv', delimiter=',', skip_header=1, dtype=[('date', 'S19'), (param, 'f8')])
 #            try:
-            data_st = pd.read_csv(data_dir+str(int(stat_nr))+'_'+param+'.csv', index_col=0, na_values={'NaN', 'nan', 'NA', 'na', -99.9, -999, -999.9, -9999})
+            data_st = pd.read_csv(filename[-1], index_col=0, na_values={'NaN', 'nan', 'NA', 'na', -99.9, -999, -999.9, -9999})
 #            except(IOError, IndexError):
 #                print('Exception in stationdata')
 #                df_metadata = df_metadata.drop(index=df_metadata.loc[df_metadata.stationnr == stat_nr].index)
