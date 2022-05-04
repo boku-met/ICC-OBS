@@ -1,7 +1,22 @@
 # coding=utf-8
+
+import sys, traceback, warnings, os
+warnings.filterwarnings("error")
+
+try: 
+    import distributed
+except Exception:
+    ex_type, ex, tb = sys.exc_info()
+    traces = traceback.extract_tb(tb)
+    fnames = [x[0] for x in traces]
+    for fn in fnames:
+        if "distributed/config.py" in fn:
+            os.remove(fn)
+            curfile = os.path.dirname(os.path.abspath(__file__))+"/lib/.config.py"
+            os.system("cp "+curfile+" "+fn)
+warnings.filterwarnings("ignore")
+
 import csv
-import os
-import sys
 
 from gooey import Gooey
 from gooey import GooeyParser
